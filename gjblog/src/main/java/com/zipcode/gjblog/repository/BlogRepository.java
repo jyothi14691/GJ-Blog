@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BlogRepository extends CrudRepository<Post,Integer> {
+public interface BlogRepository extends CrudRepository<Post,Long> {
+
+    List<Post> findByTag(String tag);
 
     Post findByTag(String tag);
 

@@ -8,19 +8,18 @@ public class Post {
 
     @Id
     @Column(name = "post_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long postId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long post_Id;
 
     @Column(name = "user_name")
-    String userName;
+    private String userName;
 
     @Column(name = "tag")
-    String tag;
-
+    private String tag;
 
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn (name = "post_content_id")
-    PostContent postContent;
+    @JoinColumn(name = "post_content_id")
+    private PostContent postContent;
 
     public PostContent getPostContent() {
         return postContent;
@@ -30,12 +29,12 @@ public class Post {
         this.postContent = postContent;
     }
 
-    public Long getPostId() {
-        return postId;
+    public Long getPost_Id() {
+        return post_Id;
     }
 
-    public void setPostId(Long postId) {
-        this.postId = postId;
+    public void setPost_Id(Long post_Id) {
+        this.post_Id = post_Id;
     }
 
     public String getUserName() {
