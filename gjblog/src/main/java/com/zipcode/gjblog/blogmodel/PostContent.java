@@ -15,9 +15,17 @@ public class PostContent {
     @Column(name="text_input")
     String textInput;
 
-    @Column(name="data_input")
-    private String dataInput;
+    @Column(name = "image_key")
+    private String image_Key;
 
+
+    public String getImage_Key() {
+        return image_Key;
+    }
+
+    public void setImage_Key(String image_Key) {
+        this.image_Key = image_Key;
+    }
 
     public Long getPostContentId() {
         return postContentId;
@@ -34,14 +42,5 @@ public class PostContent {
     public void setTextInput(String textInput) {
         this.textInput = textInput;
     }
-
-    public String getDataInput() {
-        return dataInput;
-    }
-
-    public void setDataInput(String dataInput) {
-        this.dataInput = dataInput;
-    }
-
 
 }

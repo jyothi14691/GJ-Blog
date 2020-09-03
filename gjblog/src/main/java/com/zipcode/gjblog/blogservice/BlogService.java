@@ -33,15 +33,17 @@ public class BlogService {
     }
 
 
-    public Post getBlogByTag(String tag) {
-        return blogRepository.findByTag(tag);
+    public List<Post> getBlogByTag(String tag) {
+        List<Post> resultPosts = new ArrayList<>();
+        blogRepository.findAllByTag(tag).iterator().forEachRemaining(post -> resultPosts.add(post));
+        return resultPosts;
     }
+
+
 
     public List<Post> getAllBlog() {
         List<Post> resultList = new ArrayList<>();
-       blogRepository.findAll().iterator().forEachRemaining(post -> resultList.add(post));
-       return resultList;
-
-      // return (List<Post>) blogRepository.findAll();
+        blogRepository.findAll().iterator().forEachRemaining(post -> resultList.add(post));
+        return resultList;
     }
 }

@@ -31,7 +31,7 @@ public class BlogController {
     }
 
     @GetMapping("/blog/tag")
-    public Post displayBlogByTag(@RequestParam(name = "tag") String searchTag){
+    public List<Post> displayBlogByTag(@RequestParam(name = "tag") String searchTag){
         return blogService.getBlogByTag(searchTag);
     }
 
