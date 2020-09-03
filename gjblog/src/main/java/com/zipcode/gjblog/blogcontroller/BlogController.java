@@ -1,16 +1,15 @@
 package com.zipcode.gjblog.blogcontroller;
 
+import com.zipcode.gjblog.blogmodel.Post;
+import com.zipcode.gjblog.blogmodel.PostContent;
 import com.zipcode.gjblog.blogservice.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import java.util.List;
 
-@Controller
+
+@RestController
 @RequestMapping
 public class BlogController {
 
@@ -19,5 +18,25 @@ public class BlogController {
     @Autowired
     public BlogController(BlogService blogService) {
         this.blogService = blogService;
+    }
+
+    @PostMapping("/blog/new")
+    public Post createBlog(@RequestBody Post request){
+        return blogService.postBlog(request);
+    }
+
+    @GetMapping("/blog/{id}")
+    public PostContent displayBlog(@PathVariable long id){
+        return blogService.getBlog(id);
+    }
+
+    @GetMapping("/blog/tag")
+    public Post displayBlogByTag(@RequestParam(name = "tag") String searchTag){
+        return blogService.getBlogByTag(searchTag);
+    }
+
+    @GetMapping("/blog/all")
+    public List<Post> displayAllPosts(){
+        return blogService.getAllBlog();
     }
 }

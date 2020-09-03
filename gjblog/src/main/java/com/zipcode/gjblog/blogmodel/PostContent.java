@@ -1,45 +1,47 @@
 package com.zipcode.gjblog.blogmodel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import java.sql.Blob;
+import javax.persistence.*;
+
 
 @Entity
+@Table(name = "POSTCONTENT")
 public class PostContent {
 
-    @JoinColumn
-    Integer post_Id;
+    @Id
+    @Column(name="post_content_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long postContentId;
 
-    @Column
-    String text;
+    @Column(name="text_input")
+    String textInput;
 
-    //to check and change if it is s3
-    @Lob
-    private Blob data;
+    @Column(name="data_input")
+    private String dataInput;
 
-    public Integer getPost_Id() {
-        return post_Id;
+
+    public Long getPostContentId() {
+        return postContentId;
     }
 
-    public void setPost_Id(Integer post_Id) {
-        this.post_Id = post_Id;
+    public void setPostContentId(Long postContentId) {
+        this.postContentId = postContentId;
     }
 
-    public String getText() {
-        return text;
+    public String getTextInput() {
+        return textInput;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTextInput(String textInput) {
+        this.textInput = textInput;
     }
 
-    public Blob getData() {
-        return data;
+    public String getDataInput() {
+        return dataInput;
     }
 
-    public void setData(Blob data) {
-        this.data = data;
+    public void setDataInput(String dataInput) {
+        this.dataInput = dataInput;
     }
+
+
 }

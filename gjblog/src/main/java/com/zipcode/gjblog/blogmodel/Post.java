@@ -1,33 +1,41 @@
 package com.zipcode.gjblog.blogmodel;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "POST")
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer post_Id;
+    @Column(name = "post_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long postId;
 
-    @Column
+    @Column(name = "user_name")
     String userName;
 
-    @Column
+    @Column(name = "tag")
     String tag;
 
-    PostContent content;
 
-    public Integer getPost_Id() {
-        return post_Id;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn (name = "post_content_id")
+    PostContent postContent;
+
+    public PostContent getPostContent() {
+        return postContent;
     }
 
-    public void setPost_Id(Integer post_Id) {
-        this.post_Id = post_Id;
+    public void setPostContent(PostContent postContent) {
+        this.postContent = postContent;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
     public String getUserName() {
