@@ -40,17 +40,12 @@ public class HerokuConfigCloud {
             return null;
         }
 
-        //String username = dbUri.getUserInfo().split(":")[0];
-        //String password = dbUri.getUserInfo().split(":")[1];
-//        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':'
-//                + dbUri.getPort() + dbUri.getPath();
-
         log.info("dbUri: ", dbUri.toString());
         log.info("username :", username);
         log.info("password :", password);
         log.info("dbUrl :", databaseUrl);
 
-        // fully-qualified class name to distuinguish from javax.sql.DataSource
+        // fully-qualified class name to distinguish from javax.sql.DataSource
         org.apache.tomcat.jdbc.pool.DataSource dataSource
                 = new org.apache.tomcat.jdbc.pool.DataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
